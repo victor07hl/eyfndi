@@ -28,4 +28,5 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     
 @app.route(route="mycustom")    
 def mycustom(req: func) -> func.HttpResponse:
+    req_body = req.get('name')
     return func.HttpResponde("Custom custom",status_code=200)
