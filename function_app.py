@@ -4,6 +4,7 @@ import logging
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
 
+
 @app.route(route="http_trigger")
 def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
@@ -25,6 +26,7 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
              status_code=200
         )
     
+@app.function_name(name="mycustomfunction")
 @app.route(route="mycustom")    
-def mycustom(req: func.HttpRequest) -> func.HttpResponse:
+def mycustom(req: func) -> func.HttpResponse:
     return func.HttpResponde("Custom custom",status_code=200)
